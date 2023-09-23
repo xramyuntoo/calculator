@@ -1,0 +1,18 @@
+* {
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#calcBackground {
+    width: 350px;
+    height: 600px;
+    background-color: grey;
+    margin: 50px;
+}

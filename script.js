@@ -1,0 +1,55 @@
+const body = document.querySelector("body");
+
+const container = document.createElement("div");
+container.id = "container";
+const calcBackground = document.createElement("div");
+calcBackground.id = "calcBackground";
+const calculator = document.createElement("div");
+calculator.id = "calculator";
+
+const screen = document.createElement("div");
+screen.id = "screen";
+
+const clear = document.createElement("button");
+const posOrNeg = document.createElement("button");
+const percentage = document.createElement("button");
+const divide = document.createElement("button");
+const seven = document.createElement("button");
+const eight = document.createElement("button");
+const nine = document.createElement("button");
+const multiply = document.createElement("button");
+const four = document.createElement("button");
+const five = document.createElement("button");
+const six = document.createElement("button");
+const subtract = document.createElement("button");
+const one = document.createElement("button");
+const two = document.createElement("button");
+const three = document.createElement("button"); 
+const addition = document.createElement("button");
+const zero = document.createElement("button");
+const period = document.createElement("button");
+const equals = document.createElement("button");
+
+calculator.appendChild(clear);
+calculator.appendChild(posOrNeg);
+calculator.appendChild(percentage);
+calculator.appendChild(divide);
+calculator.appendChild(seven);
+calculator.appendChild(eight);
+calculator.appendChild(nine);
+calculator.appendChild(multiply);
+calculator.appendChild(four);
+calculator.appendChild(five);
+calculator.appendChild(six);
+calculator.appendChild(subtract);
+calculator.appendChild(one);
+calculator.appendChild(two);
+calculator.appendChild(three);
+calculator.appendChild(addition);
+calculator.appendChild(zero);
+calculator.appendChild(period);
+calculator.appendChild(equals);
+calculator.appendChild(screen);
+calcBackground.appendChild(calculator);
+container.appendChild(calcBackground);
+body.appendChild(container);
