@@ -1,8 +1,8 @@
-* {
+/* * {
     border: 1px;
     border-color: black;
     border-style: solid;
-}
+} */
 
 #container {
     display: flex;
@@ -12,7 +12,7 @@
 
 #calcBackground {
     width: 350px;
-    height: 600px;
+    height: 450px;
     background-color: grey;
     margin: 50px;
     display: flex;
@@ -23,17 +23,27 @@
 #calculator {
     display: flex;
     width: 330px;
-    height: 580px;
+    height: 440px;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 #screen {
     width: 330px;
     height: 100px;
     background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    font-size: 50px;
+    margin: 5px;
+    padding: 5px;
 }
 
 button {
     width: 80px;
     height: 50px;
+    font-size: 30px;
 }

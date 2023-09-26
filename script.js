@@ -1,3 +1,30 @@
+let firstNum = "";
+let secondNum = "";
+let total = "0";
+let operator = "";
+console.log(parseInt(total));
+
+function calculate (firstNum, secondNum, operator) {
+    switch (operator) {
+        case "+":
+            total = firstNum + secondNum;
+            break;
+        case "-":
+            total = firstNum - secondNum;
+            break;
+        case "/":
+            total = firstNum / secondNum;
+            break;
+        case "*":
+            total = firstNum / secondNum;
+            break;
+        default:
+            console.log("calculate function switch default hit");
+    }
+    return total;
+}
+
+
 const body = document.querySelector("body");
 
 const container = document.createElement("div");
@@ -9,13 +36,28 @@ calculator.id = "calculator";
 
 const screen = document.createElement("div");
 screen.id = "screen";
-
+screen.textContent = total;
 const clear = document.createElement("button");
 clear.textContent = "C";
+clear.addEventListener("click", () => {
+    firstNum = "0";
+    secondNum = "0";
+    total = "0";
+});
 const posOrNeg = document.createElement("button");
 posOrNeg.textContent = "+/-";
+posOrNeg.addEventListener("click", () => {
+    if (total > 0) {
+        total = total * -1;
+    } else {
+        total = total * 1;
+    }
+});
 const percentage = document.createElement("button");
 percentage.textContent = "%";
+percentage.addEventListener("click", () => {
+    total = total / 100;
+});
 const divide = document.createElement("button");
 divide.textContent = "÷";
 const seven = document.createElement("button");
