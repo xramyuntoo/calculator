@@ -8,16 +8,21 @@ console.log(parseInt(total));
 function calculate (firstNum, secondNum, operator) {
     switch (operator) {
         case "+":
-            total = firstNum + secondNum;
+            total = (parseInt(firstNum)) + (parseInt(secondNum));
             break;
         case "-":
-            total = firstNum - secondNum;
+            total = parseInt(firstNum) - parseInt(secondNum);
             break;
         case "/":
-            total = firstNum / secondNum;
+            if (parseInt(secondNum) === 0) {
+                let str = "You cant do that";
+                screen.textContent = str;
+            } else {
+                total = parseInt(firstNum) / parseInt(secondNum);
+            }
             break;
         case "*":
-            total = firstNum / secondNum;
+            total = parseInt(firstNum) * parseInt(secondNum);
             break;
         default:
             console.log("calculate function switch default hit");
@@ -67,7 +72,12 @@ percentage.addEventListener("click", () => {
 const divide = document.createElement("button");
 divide.textContent = "÷";
 divide.addEventListener("click", () => {
-    operator = "/";
+    if (input != "") {
+        firstNum = input;
+        input = "";
+        screen.textContent = firstNum;
+        operator = "/";   
+    }
 });
 const seven = document.createElement("button");
 seven.textContent = "7";
@@ -90,7 +100,12 @@ nine.addEventListener("click", () => {
 const multiply = document.createElement("button");
 multiply.textContent = "×";
 multiply.addEventListener("click", () => {
-    operator = "*";
+    if (input != "") {
+        firstNum = input;
+        input = "";
+        screen.textContent = firstNum;
+        operator = "*";   
+    }
 });
 const four = document.createElement("button");
 four.textContent = "4";
@@ -112,6 +127,14 @@ six.addEventListener("click", () => {
 });
 const subtract = document.createElement("button");
 subtract.textContent = "-";
+subtract.addEventListener("click", () => {
+    if (input != "") {
+        firstNum = input;
+        input = "";
+        screen.textContent = firstNum;
+        operator = "-";   
+    }
+})
 const one = document.createElement("button");
 one.textContent = "1";
 one.addEventListener("click", () => {
@@ -132,6 +155,14 @@ three.addEventListener("click", () => {
 });
 const addition = document.createElement("button");
 addition.textContent = "+";
+addition.addEventListener("click", () => {
+    if (input != "") {
+        firstNum = input;
+        input = "";
+        screen.textContent = firstNum;
+        operator = "+";   
+    }
+})
 const zero = document.createElement("button");
 zero.textContent = "0";
 zero.addEventListener("click", () => {
@@ -142,6 +173,16 @@ const period = document.createElement("button");
 period.textContent = ".";
 const equals = document.createElement("button");
 equals.textContent = "=";
+equals.addEventListener("click", () => {
+    if (operator != "" && input != "") {
+        secondNum = input;
+        input = calculate(firstNum, secondNum, operator);
+        screen.textContent = input;
+        operator = "";
+        firstNum = input;
+        secondNum = "";
+    }
+})
 
 calculator.appendChild(screen);
 calculator.appendChild(clear);
