@@ -46,20 +46,23 @@ clear.addEventListener("click", () => {
     input = "";
     total = "";
     screen.textContent = input;
+    console.log("clear: input is now " + input);
 });
 const posOrNeg = document.createElement("button");
 posOrNeg.textContent = "+/-";
 posOrNeg.addEventListener("click", () => {
-    if (total > 0) {
-        total = total * -1;
-    } else {
-        total = total * 1;
+    if (input != "") {
+        input = input * -1;
     }
+    screen.textContent = input;
 });
 const percentage = document.createElement("button");
 percentage.textContent = "%";
 percentage.addEventListener("click", () => {
-    total = total / 100;
+    if (input != "") {
+        input = input / 100;
+    }
+    screen.textContent = input;
 });
 const divide = document.createElement("button");
 divide.textContent = "÷";
