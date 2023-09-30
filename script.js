@@ -3,8 +3,11 @@ let secondNum = "";
 let input = "";
 let total = "";
 let operator = "";
-let hasDecimal = false;
-console.log(parseInt(total));
+let hasDecimal = false; 
+
+const screen = document.createElement("div");
+screen.id = "screen";
+// screen.textContent = total;
 
 function calculate (firstNum, secondNum, operator) {
     switch (operator) {
@@ -15,9 +18,8 @@ function calculate (firstNum, secondNum, operator) {
             total = parseFloat(firstNum) - parseFloat(secondNum);
             break;
         case "/":
-            if (parseFloat(secondNum) === 0) {
-                let str = "You cant do that";
-                screen.textContent = str;
+            if (parseFloat(secondNum) == 0) {
+                total = "nice try";
             } else {
                 total = parseFloat(firstNum) / parseFloat(secondNum);
             }
@@ -44,9 +46,7 @@ calcBackground.id = "calcBackground";
 const calculator = document.createElement("div");
 calculator.id = "calculator";
 
-const screen = document.createElement("div");
-screen.id = "screen";
-screen.textContent = total;
+
 const clear = document.createElement("button");
 clear.textContent = "C";
 clear.addEventListener("click", () => {
@@ -189,11 +189,8 @@ equals.textContent = "=";
 equals.addEventListener("click", () => {
     if (operator != "" && input != "") {
         secondNum = input;
-        input = calculate(firstNum, secondNum, operator);
-        screen.textContent = input;
-        operator = "";
-        firstNum = input;
-        secondNum = "";
+        firstNum = calculate(firstNum, secondNum, operator);
+        screen.textContent = firstNum;
     }
 })
 
