@@ -3,29 +3,33 @@ let secondNum = "";
 let input = "";
 let total = "";
 let operator = "";
+let hasDecimal = false;
 console.log(parseInt(total));
 
 function calculate (firstNum, secondNum, operator) {
     switch (operator) {
         case "+":
-            total = (parseInt(firstNum)) + (parseInt(secondNum));
+            total = (parseFloat(firstNum)) + (parseFloat(secondNum));
             break;
         case "-":
-            total = parseInt(firstNum) - parseInt(secondNum);
+            total = parseFloat(firstNum) - parseFloat(secondNum);
             break;
         case "/":
-            if (parseInt(secondNum) === 0) {
+            if (parseFloat(secondNum) === 0) {
                 let str = "You cant do that";
                 screen.textContent = str;
             } else {
-                total = parseInt(firstNum) / parseInt(secondNum);
+                total = parseFloat(firstNum) / parseFloat(secondNum);
             }
             break;
         case "*":
-            total = parseInt(firstNum) * parseInt(secondNum);
+            total = parseFloat(firstNum) * parseFloat(secondNum);
             break;
         default:
             console.log("calculate function switch default hit");
+    }
+    if (total % 1 == 0) {
+        hasDecimal = false;
     }
     return total;
 }
@@ -50,6 +54,7 @@ clear.addEventListener("click", () => {
     secondNum = "";
     input = "";
     total = "";
+    hasDecimal = false;
     screen.textContent = input;
     console.log("clear: input is now " + input);
 });
@@ -171,6 +176,14 @@ zero.addEventListener("click", () => {
 })
 const period = document.createElement("button");
 period.textContent = ".";
+period.addEventListener("click", () => {
+    console.log("has decimal: " + hasDecimal);
+    if (!hasDecimal) {
+        input += "."
+        hasDecimal = true;
+        screen.textContent = input;
+    }
+});
 const equals = document.createElement("button");
 equals.textContent = "=";
 equals.addEventListener("click", () => {
