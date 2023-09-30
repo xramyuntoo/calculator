@@ -4,6 +4,7 @@ let input = "";
 let total = "";
 let operator = "";
 let hasDecimal = false; 
+let errorMessage = "nice try"
 
 const screen = document.createElement("div");
 screen.id = "screen";
@@ -19,7 +20,7 @@ function calculate (firstNum, secondNum, operator) {
             break;
         case "/":
             if (parseFloat(secondNum) == 0) {
-                total = "nice try";
+                total = errorMessage;
             } else {
                 total = parseFloat(firstNum) / parseFloat(secondNum);
             }
@@ -191,6 +192,11 @@ equals.addEventListener("click", () => {
         secondNum = input;
         firstNum = calculate(firstNum, secondNum, operator);
         screen.textContent = firstNum;
+        if (firstNum == errorMessage) {
+            firstNum = "";
+            secondNum = "";
+            total = "";
+        }
     }
 })
 
