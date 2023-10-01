@@ -1,14 +1,11 @@
 let firstNum = "";
 let secondNum = "";
+let lastNum = "";
 let input = "";
 let total = "";
 let operator = "";
 let hasDecimal = false; 
 let errorMessage = "nice try"
-
-const screen = document.createElement("div");
-screen.id = "screen";
-// screen.textContent = total;
 
 function calculate (firstNum, secondNum, operator) {
     switch (operator) {
@@ -37,9 +34,7 @@ function calculate (firstNum, secondNum, operator) {
     return total;
 }
 
-
 const body = document.querySelector("body");
-
 const container = document.createElement("div");
 container.id = "container";
 const calcBackground = document.createElement("div");
@@ -47,6 +42,8 @@ calcBackground.id = "calcBackground";
 const calculator = document.createElement("div");
 calculator.id = "calculator";
 
+const screen = document.createElement("div");
+screen.id = "screen";
 
 const clear = document.createElement("button");
 clear.textContent = "C";
@@ -55,6 +52,7 @@ clear.addEventListener("click", () => {
     secondNum = "";
     input = "";
     total = "";
+    lastNum = "";
     hasDecimal = false;
     screen.textContent = input;
     console.log("clear: input is now " + input);
@@ -64,6 +62,7 @@ posOrNeg.textContent = "+/-";
 posOrNeg.addEventListener("click", () => {
     if (input != "") {
         input = input * -1;
+        lastNum = ""; 
     }
     screen.textContent = input;
 });
@@ -72,6 +71,7 @@ percentage.textContent = "%";
 percentage.addEventListener("click", () => {
     if (input != "") {
         input = input / 100;
+        lastNum = ""; 
     }
     screen.textContent = input;
 });
@@ -82,7 +82,8 @@ divide.addEventListener("click", () => {
         firstNum = input;
         input = "";
         screen.textContent = firstNum;
-        operator = "/";   
+        operator = "/"; 
+        lastNum = "";  
     }
 });
 const seven = document.createElement("button");
@@ -110,7 +111,8 @@ multiply.addEventListener("click", () => {
         firstNum = input;
         input = "";
         screen.textContent = firstNum;
-        operator = "*";   
+        operator = "*";
+        lastNum = "";    
     }
 });
 const four = document.createElement("button");
@@ -138,7 +140,8 @@ subtract.addEventListener("click", () => {
         firstNum = input;
         input = "";
         screen.textContent = firstNum;
-        operator = "-";   
+        operator = "-";  
+        lastNum = "";  
     }
 })
 const one = document.createElement("button");
@@ -166,7 +169,8 @@ addition.addEventListener("click", () => {
         firstNum = input;
         input = "";
         screen.textContent = firstNum;
-        operator = "+";   
+        operator = "+";
+        lastNum = "";    
     }
 })
 const zero = document.createElement("button");
@@ -182,21 +186,29 @@ period.addEventListener("click", () => {
     if (!hasDecimal) {
         input += "."
         hasDecimal = true;
+        lastNum = ""; 
         screen.textContent = input;
     }
 });
 const equals = document.createElement("button");
 equals.textContent = "=";
 equals.addEventListener("click", () => {
-    if (operator != "" && input != "") {
+    if (firstNum == errorMessage) {
+        firstNum = "";
+        secondNum = "";
+        lastNum = "";
+        total = "";
+    } else if (operator != "" && input != "" && lastNum == "") {
         secondNum = input;
+        lastNum = input;
         firstNum = calculate(firstNum, secondNum, operator);
+        input = firstNum;
+        secondNum = "";
+        screen.textContent = firstNum;  
+    } else if (operator != "" && input != "") {
+        firstNum = calculate(firstNum, lastNum, operator);
+        input = firstNum;
         screen.textContent = firstNum;
-        if (firstNum == errorMessage) {
-            firstNum = "";
-            secondNum = "";
-            total = "";
-        }
     }
 })
 
