@@ -31,7 +31,7 @@ function calculate (firstNum, secondNum, operator) {
     if (total % 1 == 0) {
         hasDecimal = false;
     }
-    return total;
+    return +parseFloat(total).toFixed(5);
 }
 
 const body = document.querySelector("body");
