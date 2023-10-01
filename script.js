@@ -143,7 +143,7 @@ subtract.addEventListener("click", () => {
         operator = "-";  
         lastNum = "";  
     }
-})
+});
 const one = document.createElement("button");
 one.textContent = "1";
 one.addEventListener("click", () => {
@@ -210,7 +210,7 @@ equals.addEventListener("click", () => {
         input = firstNum;
         screen.textContent = firstNum;
     }
-})
+});
 
 calculator.appendChild(screen);
 calculator.appendChild(clear);
